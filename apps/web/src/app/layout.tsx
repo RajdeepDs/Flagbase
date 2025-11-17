@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "flagbase",
-	description: "flagbase",
+	title: "Flagbase",
+	description: "A TypeScript-first feature flag management.",
 };
 
 export default function RootLayout({

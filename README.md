@@ -1,69 +1,31 @@
-# flagbase
+# Flagbase
 
-This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Next.js, Self, TRPC, and more.
+TypeScript-first feature flag management. Ship faster with type-safe, predictable, and developer-friendly feature flags-built entirely with TypeScript.
+
+## Overview
+
+Flagbase is a modern feature flag management system built for TypeScript developers.
+It gives you:
+
+- **Strong type-safety**: auto-generated flags.ts with full static typing.
+- **Type-safety with CLIs**: manage feature flags with type-safe CLI tools.
+- **Blazing-fast SDKs**: lightweight server/client SDK with zero-config local mode
+- **Purpose-built for SaaS**: dashboard, billing, and authentication included.
+
+> *Flagbase puts developers first. No vendor lock-in.*
 
 ## Features
 
-- **TypeScript** - For type safety and improved developer experience
-- **Next.js** - Full-stack React framework
-- **TailwindCSS** - Utility-first CSS for rapid UI development
-- **shadcn/ui** - Reusable UI components
-- **tRPC** - End-to-end type-safe APIs
-- **Prisma** - TypeScript-first ORM
-- **PostgreSQL** - Database engine
-- **Authentication** - Better-Auth
-- **Turborepo** - Optimized monorepo build system
+- **Next.js (App Router)**: dashboard & control plane
+- **tRPC**: end-to-end type-safe API
+- **Docker Postgres**: local development database
+- **Prisma ORM**: typed database access
+- **Better-Auth**: authentication
+- **Polar**: billing for hosted version
+- **Turborepo**: monorepo management
+- **Fumadocs**: documentation site
 
-## Getting Started
+## Contributing
 
-First, install the dependencies:
-
-```bash
-pnpm install
-```
-## Database Setup
-
-This project uses PostgreSQL with Prisma.
-
-1. Make sure you have a PostgreSQL database set up.
-2. Update your `apps/web/.env` file with your PostgreSQL connection details.
-
-3. Generate the Prisma client and push the schema:
-```bash
-pnpm run db:push
-```
-
-
-Then, run the development server:
-
-```bash
-pnpm run dev
-```
-
-Open [http://localhost:3001](http://localhost:3001) in your browser to see your fullstack application.
-
-
-
-
-
-
-
-## Project Structure
-
-```
-flagbase/
-├── apps/
-│   └── web/         # Fullstack application (Next.js)
-├── packages/
-│   ├── api/         # API layer / business logic
-│   ├── auth/        # Authentication configuration & logic
-│   └── db/          # Database schema & queries
-```
-
-## Available Scripts
-
-- `pnpm run dev`: Start all applications in development mode
-- `pnpm run build`: Build all applications
-- `pnpm run check-types`: Check TypeScript types across all apps
-- `pnpm run db:push`: Push schema changes to database
-- `pnpm run db:studio`: Open database studio UI
+Contributions are welcome once the initial architecture is stable.
+Feel free to open issues, suggest improvements.
