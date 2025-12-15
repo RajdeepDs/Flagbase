@@ -23,15 +23,15 @@
     "db:down": "turbo -F @flagbase/db db:down"
   },
   "dependencies": {
-    "dotenv": "^17.2.2",
-    "zod": "^4.1.11"
+    "dotenv": "^17.2.3",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
-    "turbo": "^2.5.4",
-    "@biomejs/biome": "2.3.5",
-    "ultracite": "6.3.3",
-    "tsdown": "^0.15.5",
-    "@types/node": "^22.13.11"
+    "@biomejs/biome": "2.3.8",
+    "@types/node": "^25.0.2",
+    "tsdown": "^0.17.4",
+    "turbo": "^2.6.3",
+    "ultracite": "6.4.0"
   },
   "packageManager": "pnpm@10.18.3"
 }

@@ -23,9 +23,9 @@
     "db:down": "docker compose down"
   },
   "devDependencies": {
-    "prisma": "^6.15.0",
-    "tsdown": "catalog:",
-    "@flagbase/config": "workspace:*"
+    "@flagbase/config": "workspace:*",
+    "prisma": "^7.1.0",
+    "tsdown": "catalog:"
   },
   "peerDependencies": {
     "typescript": "^5"
