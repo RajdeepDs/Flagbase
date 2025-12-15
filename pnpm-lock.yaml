@@ -301,6 +301,19 @@ importers:
 
   packages/config: {}
 
+  packages/core:
+    dependencies:
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+    devDependencies:
+      '@flagbase/config':
+        specifier: workspace:*
+        version: link:../config
+      tsdown:
+        specifier: 'catalog:'
+        version: 0.17.4(typescript@5.9.3)
+
   packages/db:
     dependencies:
       '@prisma/client':
