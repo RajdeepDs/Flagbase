@@ -10,6 +10,8 @@
   "dependencies": {
     "@flagbase/api": "workspace:*",
     "@flagbase/auth": "workspace:*",
+    "@flagbase/core": "workspace:*",
+    "@flagbase/db": "workspace:*",
     "@polar-sh/better-auth": "catalog:",
     "@prisma/client": "catalog:",
     "@tanstack/react-form": "^1.27.3",
