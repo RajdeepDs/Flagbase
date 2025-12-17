@@ -48,3 +48,6 @@ coverage
 .cache
 tmp
 temp
+
+# Flagbase
+flagbase.config.json
