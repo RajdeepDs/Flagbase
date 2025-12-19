@@ -1,21 +1,15 @@
 import { Command } from "commander";
-import { readToken } from "../auth/token-store";
+import { apiCall } from "../api/client";
 import { writeConfig } from "../config/write";
 
 export const initCommand = new Command("init")
   .description("Initialize Flagbase in this repo")
-  .action(() => {
-    const token = readToken();
+  .action(async () => {
+    const app = await apiCall<{ id: string }>("app.create", {
+      name: "my-app",
+    });
 
-    if (!token) {
-      console.error("Please run `flagbase login` first");
-      process.exit(1);
-    }
+    writeConfig(app.id);
 
-    // MVP: local-only app id
-    const appId = "local-app";
-
-    writeConfig(appId);
-
-    console.log("Flagbase initialized");
+    console.log("Flagbase initialized with app:", app.id);
   });
