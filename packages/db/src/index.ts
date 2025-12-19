@@ -8,3 +8,4 @@ const adapter = new PrismaPg({
 const db = new PrismaClient({ adapter });
 
 export default db;
+export { Prisma } from "../prisma/generated/client";

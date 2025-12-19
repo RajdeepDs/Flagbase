@@ -1,24 +1,37 @@
 import { flagRouterContract } from "@flagbase/api";
 import { validateFlagDefinition } from "@flagbase/core";
-import db from "@flagbase/db";
+import db, { Prisma } from "@flagbase/db";
+import { TRPCError } from "@trpc/server";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 export const flagRouter = createTRPCRouter({
   create: protectedProcedure
     .input(flagRouterContract.create.input)
-    .mutation(({ input }) => {
+    .mutation(async ({ input }) => {
       validateFlagDefinition(input);
 
-      return db.flag.create({
-        data: {
-          appId: input.appId,
-          key: input.key,
-          type: input.type,
-          defaultValue: input.defaultValue,
-          enumValues: input.enumValues,
-          description: input.description,
-        },
-      });
+      try {
+        return await db.flag.create({
+          data: {
+            appId: input.appId,
+            key: input.key,
+            type: "boolean",
+            defaultValue: input.defaultValue,
+            description: input.description,
+          },
+        });
+      } catch (error) {
+        if (
+          error instanceof Prisma.PrismaClientKnownRequestError &&
+          error.code === "P2002"
+        ) {
+          throw new TRPCError({
+            code: "CONFLICT",
+            message: `Flag "${input.key}" already exists in this app`,
+          });
+        }
+        throw error;
+      }
     }),
 
   list: protectedProcedure
@@ -26,6 +39,11 @@ export const flagRouter = createTRPCRouter({
     .query(async ({ input }) =>
       db.flag.findMany({
         where: { appId: input.appId },
+        select: {
+          key: true,
+          defaultValue: true,
+          description: true,
+        },
         orderBy: { createdAt: "asc" },
       })
     ),
