@@ -1,3 +1,3 @@
 export * from "./flag/schema";
 export * from "./flag/types";
-export * from "./flag/validators";
+export * from "./flag/validate";

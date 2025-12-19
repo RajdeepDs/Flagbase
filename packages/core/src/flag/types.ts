@@ -1,9 +1,9 @@
-export type FlagType = "boolean" | "number" | "string" | "enum";
-
-export type FlagDefinition = {
+/**
+ * A Flag is a boolean feature toggle.
+ * This is the MVP contract.
+ */
+export interface FlagDefinition {
   key: string;
-  type: FlagType;
-  defaultValue: boolean | string | number;
-  enumValues?: readonly string[];
+  defaultValue: boolean;
   description?: string;
-};
+}
