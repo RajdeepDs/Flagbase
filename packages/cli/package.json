@@ -16,6 +16,7 @@
         "tsdown": "catalog:"
     },
     "dependencies": {
+        "@flagbase/core": "workspace:*",
         "commander": "^14.0.2"
     }
 }

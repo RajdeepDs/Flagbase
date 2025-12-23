@@ -1,3 +1,4 @@
+import type { FlagDefinition } from "@flagbase/core";
 import { Command } from "commander";
 import { apiCall } from "../api/client";
 import { readConfig } from "../config/read";
@@ -8,7 +9,11 @@ export const pullCommand = new Command("pull")
   .action(async () => {
     const { appId } = readConfig();
 
-    const flags = await apiCall<any[]>("flag.list", { appId }, "query");
+    const flags: FlagDefinition[] = await apiCall(
+      "flag.list",
+      { appId },
+      "query"
+    );
 
     generateFlagsDts(flags);
 

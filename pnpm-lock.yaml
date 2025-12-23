@@ -310,6 +310,9 @@ importers:
 
   packages/cli:
     dependencies:
+      '@flagbase/core':
+        specifier: workspace:*
+        version: link:../core
       commander:
         specifier: ^14.0.2
         version: 14.0.2

@@ -1,3 +1,4 @@
+import type { FlagDefinition } from "@flagbase/core";
 import { Command } from "commander";
 import { apiCall } from "../api/client";
 import { readConfig } from "../config/read";
@@ -7,11 +8,13 @@ export const listCommand = new Command("list")
   .action(async () => {
     const { appId } = readConfig();
 
-    const flags = await apiCall<any[]>("flag.list", { appId }, "query");
+    const flags: FlagDefinition[] = await apiCall(
+      "flag.list",
+      { appId },
+      "query"
+    );
 
     for (const flag of flags) {
-      console.log(
-        `${flag.key.padEnd(20)} ${flag.type.padEnd(8)} default=${flag.defaultValue}`
-      );
+      console.log(`${flag.key.padEnd(20)} value=${flag.value}`);
     }
   });

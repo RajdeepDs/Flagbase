@@ -1,37 +1,32 @@
+import { flagDefinitionSchema } from "@flagbase/core";
 import { Command } from "commander";
 import { apiCall } from "../api/client";
 import { readConfig } from "../config/read";
+import { validateWithSchema } from "../validation/validate";
 
 export const flagCreateCommand = new Command("create")
   .argument("<key>")
-  .requiredOption("--type <type>")
-  .requiredOption("--default <value>")
-  .option("--values <values>")
-  .option("--description <description>")
-  .action(async (key, options) => {
+  .argument("<value>")
+  .action(async (key, value) => {
     const { appId } = readConfig();
+    let defaultValue: boolean;
 
-    const input: any = {
-      appId,
-      key,
-      type: options.type,
-      defaultValue: (() => {
-        if (options.type === "boolean") {
-          return options.default === "true";
-        }
-        if (options.type === "number") {
-          return Number(options.default);
-        }
-        return options.default;
-      })(),
-      description: options.description,
-    };
-
-    if (options.type === "enum") {
-      input.enumValues = options.values?.split(",");
+    if (value === "true") {
+      defaultValue = true;
+    } else if (value === "false") {
+      defaultValue = false;
+    } else {
+      throw new Error("Value must be either true or false");
     }
 
-    await apiCall("flag.create", input, "mutation");
+    const input = {
+      key,
+      value: defaultValue,
+    };
+
+    validateWithSchema(flagDefinitionSchema, input);
+
+    await apiCall("flag.create", { appId, ...input }, "mutation");
 
     console.log(`Flag "${key}" created`);
   });
