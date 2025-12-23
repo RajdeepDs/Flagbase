@@ -22,14 +22,12 @@ model App {
 }
 
 model Flag {
-  id           String   @id @default(cuid())
-  appId        String
-  key          String
-  type         String
-  defaultValue Json
-  enumValues   Json?
-  description  String?
-  createdAt    DateTime @default(now())
+  id          String   @id @default(cuid())
+  appId       String
+  key         String
+  value       Boolean
+  description String?
+  createdAt   DateTime @default(now())
 
   app App @relation(fields: [appId], references: [id])
 

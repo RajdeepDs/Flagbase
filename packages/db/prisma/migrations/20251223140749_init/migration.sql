@@ -80,9 +80,7 @@ CREATE TABLE "flag" (
     "id" TEXT NOT NULL,
     "appId" TEXT NOT NULL,
     "key" TEXT NOT NULL,
-    "type" TEXT NOT NULL,
-    "defaultValue" JSONB NOT NULL,
-    "enumValues" JSONB,
+    "value" BOOLEAN NOT NULL,
     "description" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
