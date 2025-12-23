@@ -12,7 +12,6 @@ export const flagDefinitionSchema = z
       .regex(/^[a-z][a-z0-9-]*$/, {
         message: "Flag key must be kebab-case (e.g. new-dashboard)",
       }),
-    defaultValue: z.boolean(),
-    description: z.string().optional(),
+    value: z.boolean(),
   })
   .strict();

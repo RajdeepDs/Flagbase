@@ -4,6 +4,5 @@
  */
 export type FlagDefinition = {
   key: string;
-  defaultValue: boolean;
-  description?: string;
+  value: boolean;
 };

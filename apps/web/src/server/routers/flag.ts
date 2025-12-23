@@ -15,9 +15,7 @@ export const flagRouter = createTRPCRouter({
           data: {
             appId: input.appId,
             key: input.key,
-            type: "boolean",
-            defaultValue: input.defaultValue,
-            description: input.description,
+            value: input.value,
           },
         });
       } catch (error) {
@@ -41,8 +39,7 @@ export const flagRouter = createTRPCRouter({
         where: { appId: input.appId },
         select: {
           key: true,
-          defaultValue: true,
-          description: true,
+          value: true,
         },
         orderBy: { createdAt: "asc" },
       })
