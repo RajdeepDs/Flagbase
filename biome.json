@@ -4,6 +4,20 @@
         "rules": {
             "performance": {
                 "noBarrelFile": "off"
+            },
+            "complexity": {
+                "noBannedTypes": "off"
+            },
+            "suspicious": {
+                "noEmptyInterface": "off"
+            },
+            "style": {
+                "useConsistentTypeDefinitions": {
+                    "options": {
+                        "style": "interface"
+                    },
+                    "level": "error"
+                }
             }
         }
     },

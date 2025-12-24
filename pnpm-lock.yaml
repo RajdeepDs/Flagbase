@@ -137,6 +137,12 @@ importers:
         specifier: 'catalog:'
         version: 5.9.3
 
+  apps/playground:
+    dependencies:
+      '@flagbase/sdk':
+        specifier: workspace:*
+        version: link:../../packages/sdk
+
   apps/web:
     dependencies:
       '@flagbase/api':
@@ -366,6 +372,19 @@ importers:
       prisma:
         specifier: ^7.1.0
         version: 7.1.0(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      tsdown:
+        specifier: 'catalog:'
+        version: 0.17.4(typescript@5.9.3)
+
+  packages/sdk:
+    dependencies:
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+    devDependencies:
+      '@flagbase/config':
+        specifier: workspace:*
+        version: link:../config
       tsdown:
         specifier: 'catalog:'
         version: 0.17.4(typescript@5.9.3)
@@ -5198,7 +5217,7 @@ snapshots:
 
   '@radix-ui/rect@1.1.1': {}
 
-  '@reduxjs/toolkit@2.11.1(react-redux@9.2.0(@types/react@19.2.7)(react@19.2.3)(redux@5.0.1))(react@19.2.3)':
+  '@reduxjs/toolkit@2.11.1(react-redux@9.2.0(react@19.2.3)(redux@5.0.1))(react@19.2.3)':
     dependencies:
       '@standard-schema/spec': 1.0.0
       '@standard-schema/utils': 0.3.0
@@ -7015,7 +7034,7 @@ snapshots:
 
   recharts@3.5.1(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react-is@19.2.0)(react@19.2.3)(redux@5.0.1):
     dependencies:
-      '@reduxjs/toolkit': 2.11.1(react-redux@9.2.0(@types/react@19.2.7)(react@19.2.3)(redux@5.0.1))(react@19.2.3)
+      '@reduxjs/toolkit': 2.11.1(react-redux@9.2.0(react@19.2.3)(redux@5.0.1))(react@19.2.3)
       clsx: 2.1.1
       decimal.js-light: 2.5.1
       es-toolkit: 1.43.0

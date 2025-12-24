@@ -2,7 +2,7 @@
  * A Flag is a boolean feature toggle.
  * This is the MVP contract.
  */
-export type FlagDefinition = {
+export interface FlagDefinition {
   key: string;
   value: boolean;
-};
+}
