@@ -1,0 +1,23 @@
+{
+    "name": "@flagbase/react-sdk",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./src/index.ts"
+        }
+    },
+    "scripts": {
+        "build": "tsdown"
+    },
+    "devDependencies": {
+        "@flagbase/config": "workspace:*",
+        "@types/react": "catalog:",
+        "tsdown": "catalog:"
+    },
+    "peerDependencies": {
+        "react": "^19",
+        "typescript": "^5"
+    }
+}
