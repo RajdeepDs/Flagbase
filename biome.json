@@ -40,7 +40,8 @@
             "!**/.alchemy",
             "!**/.svelte-kit",
             "!**/wrangler.jsonc",
-            "!**/.source"
+            "!**/.source",
+            "!**/components/ui"
         ]
     },
     "extends": [
