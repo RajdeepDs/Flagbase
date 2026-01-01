@@ -1,0 +1,22 @@
+{
+    "name": "@flagbase/cli",
+    "private": true,
+    "type": "module",
+    "bin": {
+        "flagbase": "./dist/index.mjs"
+    },
+    "scripts": {
+        "build": "tsdown"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "devDependencies": {
+        "@flagbase/config": "workspace:*",
+        "tsdown": "catalog:"
+    },
+    "dependencies": {
+        "@flagbase/core": "workspace:*",
+        "commander": "^14.0.2"
+    }
+}

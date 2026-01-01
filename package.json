@@ -1,0 +1,37 @@
+{
+  "name": "flagbase",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "check": "biome check --write .",
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:native": "turbo -F native dev",
+    "dev:web": "turbo -F web dev",
+    "db:push": "turbo -F @flagbase/db db:push",
+    "db:studio": "turbo -F @flagbase/db db:studio",
+    "db:generate": "turbo -F @flagbase/db db:generate",
+    "db:migrate": "turbo -F @flagbase/db db:migrate",
+    "db:start": "turbo -F @flagbase/db db:start",
+    "db:watch": "turbo -F @flagbase/db db:watch",
+    "db:stop": "turbo -F @flagbase/db db:stop",
+    "db:down": "turbo -F @flagbase/db db:down"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.8",
+    "@types/node": "^25.0.2",
+    "tsdown": "^0.17.4",
+    "turbo": "^2.6.3",
+    "ultracite": "6.4.0"
+  },
+  "packageManager": "pnpm@10.18.3"
+}

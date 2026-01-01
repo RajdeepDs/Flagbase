@@ -1,0 +1,37 @@
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  apps App[]
+
+  @@map("organization")
+}
+
+model App {
+  id        String   @id @default(cuid())
+  name      String
+  orgId     String
+  createdAt DateTime @default(now())
+
+  org   Organization @relation(fields: [orgId], references: [id])
+  flags Flag[]
+
+  @@index([orgId])
+  @@map("app")
+}
+
+model Flag {
+  id          String   @id @default(cuid())
+  appId       String
+  key         String
+  value       Boolean
+  description String?
+  createdAt   DateTime @default(now())
+
+  app App @relation(fields: [appId], references: [id])
+
+  @@unique([appId, key])
+  @@index([appId])
+  @@map("flag")
+}

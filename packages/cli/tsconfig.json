@@ -1,0 +1,9 @@
+{
+    "extends": "@flagbase/config/tsconfig.base.json",
+    "compilerOptions": {
+        "outDir": "dist"
+    },
+    "include": [
+        "src"
+    ]
+}
