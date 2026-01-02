@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FlagTable } from "@/components/flags/flag-table";
 import { columns, type Flag } from "@/components/flags/flags-columns";
 import { PageHeader } from "@/components/layout/page-header";
+import { ScrollableContainer } from "@/components/layout/scrollable-container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -44,9 +45,9 @@ export default async function FlagsPage() {
           </Link>
         }
       />
-      <div className="flex-1">
+      <ScrollableContainer>
         <FlagTable columns={columns} data={data} />
-      </div>
+      </ScrollableContainer>
     </div>
   );
 }

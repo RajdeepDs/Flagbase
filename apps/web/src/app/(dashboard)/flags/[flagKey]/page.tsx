@@ -1,5 +1,6 @@
 import type { Flag } from "@/components/flags/flags-columns";
 import { PageHeader } from "@/components/layout/page-header";
+import { ScrollableContainer } from "@/components/layout/scrollable-container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -63,39 +64,41 @@ export default async function FlagPage({
           </Badge>
         }
       />
-      <div className="flex-1 space-y-8 p-4 sm:mx-auto sm:min-w-1/2 sm:border-x">
-        <div className="flex flex-col gap-4">
-          <h1 className="font-medium text-muted-foreground text-xs uppercase">
-            Status
-          </h1>
-          <Item variant={"secondary"}>
-            <ItemContent className="gap-0">
-              <ItemTitle>Disabled in Production</ItemTitle>
-              <ItemDescription>
-                Users will not see this feature.
-              </ItemDescription>
-            </ItemContent>
-            <ItemActions className="flex-col items-end">
-              <Toggle variant={"outline"}>Enable for Production</Toggle>
-            </ItemActions>
-            <ItemFooter>
-              <ItemDescription>Last changed · 2 hours ago</ItemDescription>
-            </ItemFooter>
-          </Item>
+      <ScrollableContainer>
+        <div className="flex-1 space-y-8 p-4 sm:mx-auto sm:min-w-1/2 sm:border-x">
+          <div className="flex flex-col gap-4">
+            <h1 className="font-medium text-muted-foreground text-xs uppercase">
+              Status
+            </h1>
+            <Item variant={"secondary"}>
+              <ItemContent className="gap-0">
+                <ItemTitle>Disabled in Production</ItemTitle>
+                <ItemDescription>
+                  Users will not see this feature.
+                </ItemDescription>
+              </ItemContent>
+              <ItemActions className="flex-col items-end">
+                <Toggle variant={"outline"}>Enable for Production</Toggle>
+              </ItemActions>
+              <ItemFooter>
+                <ItemDescription>Last changed · 2 hours ago</ItemDescription>
+              </ItemFooter>
+            </Item>
+          </div>
+          <Separator />
+          <div className="flex flex-col gap-1">
+            <h1 className="font-medium text-muted-foreground text-xs uppercase">
+              Danger zone
+            </h1>
+            <p className="text-muted-foreground text-sm">
+              Delete this flag permanently. This action cannot be undone.
+            </p>
+            <Button className={"mt-3 w-fit"} variant={"destructive"}>
+              Delete flag
+            </Button>
+          </div>
         </div>
-        <Separator />
-        <div className="flex flex-col gap-1">
-          <h1 className="font-medium text-muted-foreground text-xs uppercase">
-            Danger zone
-          </h1>
-          <p className="text-muted-foreground text-sm">
-            Delete this flag permanently. This action cannot be undone.
-          </p>
-          <Button className={"mt-3 w-fit"} variant={"destructive"}>
-            Delete flag
-          </Button>
-        </div>
-      </div>
+      </ScrollableContainer>
     </div>
   );
 }
