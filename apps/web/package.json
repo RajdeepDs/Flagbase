@@ -23,6 +23,7 @@
         "@trpc/client": "catalog:",
         "@trpc/server": "catalog:",
         "@trpc/tanstack-react-query": "^11.8.0",
+        "@uidotdev/usehooks": "^2.4.1",
         "babel-plugin-react-compiler": "^1.0.0",
         "better-auth": "catalog:",
         "class-variance-authority": "^0.7.1",

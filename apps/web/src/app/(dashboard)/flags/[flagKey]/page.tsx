@@ -19,15 +19,13 @@ async function getData(): Promise<Flag[]> {
       id: "728ed52f",
       name: "New Feature Flag",
       key: "new-feature-flag",
-      status: false, // the controlable switch for the flag both values should be same
-      default: false, // the current value of flag -- readonly
+      status: false,
     },
     {
       id: "cmjinxj5t00056hkmqukxkd8c",
       name: "Dashboard Flag",
       key: "dashboard-flag",
       status: true,
-      default: true,
     },
   ];
 }
