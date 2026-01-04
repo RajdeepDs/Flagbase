@@ -9,9 +9,12 @@ export default function SignUpPage() {
         <FlagbaseIcon />
         <OAuthButtons title="Welcome to Flagbase" />
       </div>
-      <p className="text-muted-foreground text-sm">
+      <p className="font-medium text-muted-foreground text-sm">
         Already have an account?{" "}
-        <Link className="text-foreground" href={{ pathname: "/login" }}>
+        <Link
+          className="text-foreground hover:underline"
+          href={{ pathname: "/login" }}
+        >
           Log in
         </Link>
       </p>
