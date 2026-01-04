@@ -16,15 +16,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-interface FlagTableProps<TData, TValue> {
+interface ListTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function FlagTable<TData, TValue>({
+export function ListTable<TData, TValue>({
   columns,
   data,
-}: FlagTableProps<TData, TValue>) {
+}: ListTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
     columns,
