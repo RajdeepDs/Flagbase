@@ -1,0 +1,24 @@
+{
+  "name": "@flagbase/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@flagbase/db": "workspace:*",
+    "@flagbase/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@flagbase/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
