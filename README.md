@@ -1,8 +1,20 @@
-# flagbase
+# Flagbase
 
-This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Next.js, Hono, ORPC, and more.
+TypeScript-first feature flag management. Ship faster with type-safe, predictable, and developer-friendly feature flags-built entirely with TypeScript.
 
-## Features
+## Overview
+
+Flagbase is a modern feature flag management system built for TypeScript developers.
+It gives you:
+
+- **Strong type-safety**: auto-generated flags.ts with full static typing.
+- **Type-safety with CLIs**: manage feature flags with type-safe CLI tools.
+- **Blazing-fast SDKs**: lightweight server/client SDK with zero-config local mode
+- **Purpose-built for SaaS**: dashboard, billing, and authentication included.
+
+> *Flagbase puts developers first. No vendor lock-in.*
+
+## Technologies Used
 
 - **TypeScript** - For type safety and improved developer experience
 - **Next.js** - Full-stack React framework
@@ -54,11 +66,17 @@ The API is running at [http://localhost:3000](http://localhost:3000).
 flagbase/
 ├── apps/
 │   ├── web/         # Frontend application (Next.js)
+│   ├── docs/        # Documentation site (Fumadocs)
 │   └── server/      # Backend API (Hono, ORPC)
 ├── packages/
-│   ├── api/         # API layer / business logic
 │   ├── auth/        # Authentication configuration & logic
+│   ├── cli/         # CLI tools for managing feature flags
+│   ├── config/      # Shared configuration (TSConfig)
+│   └── core/        # Core shared utilities and types
 │   └── db/          # Database schema & queries
+│   └── env/         # Environment variable management
+│   └── orpc/        # oRPC shared contracts and utilities
+│   └── react-sdk/   # Type-safe React SDK for feature flags
 ```
 
 ## Available Scripts
@@ -71,3 +89,9 @@ flagbase/
 - `bun run db:push`: Push schema changes to database
 - `bun run db:studio`: Open database studio UI
 - `bun run check`: Run Biome formatting and linting
+
+
+## Contributing
+
+Contributions are welcome once the initial architecture is stable.
+Feel free to open issues, suggest improvements.
