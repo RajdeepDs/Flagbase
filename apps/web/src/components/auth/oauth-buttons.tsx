@@ -11,7 +11,7 @@ export function OAuthButtons({ title }: { title: string }) {
     await signIn.social(
       {
         provider,
-        callbackURL: "/",
+        callbackURL: "http://localhost:3001/",
       },
       {
         onRequest: () => {
