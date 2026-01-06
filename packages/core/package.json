@@ -1,0 +1,17 @@
+{
+  "name": "@flagbase/core",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {},
+  "devDependencies": {
+    "@flagbase/config": "workspace:*"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

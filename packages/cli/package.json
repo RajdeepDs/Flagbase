@@ -1,0 +1,19 @@
+{
+  "name": "@flagbase/cli",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "flagbase": "./index.ts"
+  },
+  "scripts": {},
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "devDependencies": {
+    "@flagbase/config": "workspace:*"
+  },
+  "dependencies": {
+    "@flagbase/core": "workspace:*",
+    "commander": "^14.0.2"
+  }
+}

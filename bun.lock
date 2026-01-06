@@ -13,7 +13,7 @@
         "@biomejs/biome": "2.3.11",
         "@flagbase/config": "workspace:*",
         "@types/bun": "catalog:",
-        "husky": "latest",
+        "husky": "^9.1.7",
         "lint-staged": "latest",
         "turbo": "^2.6.3",
         "typescript": "catalog:",
@@ -120,9 +120,34 @@
         "typescript": "catalog:",
       },
     },
+    "packages/cli": {
+      "name": "@flagbase/cli",
+      "bin": {
+        "flagbase": "./index.ts",
+      },
+      "dependencies": {
+        "@flagbase/core": "workspace:*",
+        "commander": "^14.0.2",
+      },
+      "devDependencies": {
+        "@flagbase/config": "workspace:*",
+      },
+      "peerDependencies": {
+        "typescript": "^5",
+      },
+    },
     "packages/config": {
       "name": "@flagbase/config",
       "version": "0.0.0",
+    },
+    "packages/core": {
+      "name": "@flagbase/core",
+      "devDependencies": {
+        "@flagbase/config": "workspace:*",
+      },
+      "peerDependencies": {
+        "typescript": "^5",
+      },
     },
     "packages/db": {
       "name": "@flagbase/db",
@@ -172,6 +197,17 @@
       "devDependencies": {
         "@flagbase/config": "workspace:*",
         "typescript": "catalog:",
+      },
+    },
+    "packages/react-sdk": {
+      "name": "@flagbase/react-sdk",
+      "devDependencies": {
+        "@flagbase/config": "workspace:*",
+        "@types/react": "^19.2.7",
+      },
+      "peerDependencies": {
+        "react": "^19",
+        "typescript": "^5",
       },
     },
   },
@@ -362,13 +398,19 @@
 
     "@flagbase/auth": ["@flagbase/auth@workspace:packages/auth"],
 
+    "@flagbase/cli": ["@flagbase/cli@workspace:packages/cli"],
+
     "@flagbase/config": ["@flagbase/config@workspace:packages/config"],
+
+    "@flagbase/core": ["@flagbase/core@workspace:packages/core"],
 
     "@flagbase/db": ["@flagbase/db@workspace:packages/db"],
 
     "@flagbase/env": ["@flagbase/env@workspace:packages/env"],
 
     "@flagbase/orpc": ["@flagbase/orpc@workspace:packages/orpc"],
+
+    "@flagbase/react-sdk": ["@flagbase/react-sdk@workspace:packages/react-sdk"],
 
     "@floating-ui/core": ["@floating-ui/core@1.7.3", "", { "dependencies": { "@floating-ui/utils": "^0.2.10" } }, "sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w=="],
 
