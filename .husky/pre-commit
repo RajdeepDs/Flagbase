@@ -1,8 +1,14 @@
-bun test
-
 #!/bin/sh
 # Exit on any error
 set -e
+
+# Run tests if any test files are present
+if ls **/*.test.* **/*.spec.* >/dev/null 2>&1; then
+  bun test
+else
+  echo "ℹ️ No tests yet, skipping"
+fi
+
 
 # Check if there are any staged files
 if [ -z "$(git diff --cached --name-only)" ]; then
@@ -36,10 +42,10 @@ if [ $STASHED -eq 0 ]; then
       fi
     done
   fi
-  
+
   # Restore unstaged changes
   git stash pop --quiet || true
-  
+
   # Restore partial staging if files were partially staged
   if [ -n "$PARTIALLY_STAGED" ]; then
     for file in $PARTIALLY_STAGED; do
