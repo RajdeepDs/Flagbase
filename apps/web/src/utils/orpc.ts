@@ -1,6 +1,5 @@
-import type { AppRouterClient } from "@flagbase/api/routers/index";
-
 import { env } from "@flagbase/env/web";
+import type { AppRouterClient } from "@flagbase/orpc/routers/index";
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";

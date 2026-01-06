@@ -1,0 +1,7 @@
+{
+  "extends": "@flagbase/config/tsconfig.base.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
+}
