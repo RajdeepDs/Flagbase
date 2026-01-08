@@ -1,5 +1,6 @@
 "use client";
 
+import { env } from "@flagbase/env/web";
 import { useState } from "react";
 import { signIn } from "@/lib/auth-client";
 import { Button } from "../ui/button";
@@ -11,7 +12,7 @@ export function OAuthButtons({ title }: { title: string }) {
     await signIn.social(
       {
         provider,
-        callbackURL: "http://localhost:3001/",
+        callbackURL: env.NEXT_PUBLIC_APP_URL,
       },
       {
         onRequest: () => {

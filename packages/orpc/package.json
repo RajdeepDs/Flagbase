@@ -15,10 +15,12 @@
     "@flagbase/db": "workspace:*",
     "@flagbase/env": "workspace:*",
     "@orpc/client": "catalog:",
+    "@orpc/contract": "catalog:",
     "@orpc/openapi": "catalog:",
     "@orpc/server": "catalog:",
     "@orpc/zod": "catalog:",
     "dotenv": "catalog:",
+    "hono": "^4.11.3",
     "zod": "catalog:"
   },
   "devDependencies": {

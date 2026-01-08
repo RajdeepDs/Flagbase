@@ -1,5 +1,5 @@
 import { env } from "@flagbase/env/web";
-import type { AppRouterClient } from "@flagbase/orpc/routers/index";
+import type { ContractsClient } from "@flagbase/orpc";
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";
@@ -37,6 +37,6 @@ export const link = new RPCLink({
   },
 });
 
-export const client: AppRouterClient = createORPCClient(link);
+export const client: ContractsClient = createORPCClient(link);
 
 export const orpc = createTanstackQueryUtils(client);

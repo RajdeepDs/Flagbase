@@ -1,7 +1,5 @@
 import { auth } from "@flagbase/auth";
 import { env } from "@flagbase/env/server";
-import { createContext } from "@flagbase/orpc/context";
-import { appRouter } from "@flagbase/orpc/routers/index";
 import { OpenAPIHandler } from "@orpc/openapi/fetch";
 import { OpenAPIReferencePlugin } from "@orpc/openapi/plugins";
 import { onError } from "@orpc/server";
@@ -10,6 +8,8 @@ import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
+import { createContext } from "./context";
+import { appRouter } from "./routers";
 
 const app = new Hono();
 

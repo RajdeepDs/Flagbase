@@ -1,20 +1,11 @@
-import { ORPCError, os } from "@orpc/server";
+import { type ContractRouterClient, oc } from "@orpc/contract";
+import { userRouter } from "./routers/user";
 
-import type { Context } from "./context";
+export * from "./schemas/user.schema";
 
-export const o = os.$context<Context>();
-
-export const publicProcedure = o;
-
-const requireAuth = o.middleware(({ context, next }) => {
-  if (!context.session?.user) {
-    throw new ORPCError("UNAUTHORIZED");
-  }
-  return next({
-    context: {
-      session: context.session,
-    },
-  });
+export const contracts = oc.router({
+  user: userRouter,
 });
 
-export const protectedProcedure = publicProcedure.use(requireAuth);
+export type Contracts = typeof contracts;
+export type ContractsClient = ContractRouterClient<typeof contracts>;
