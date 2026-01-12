@@ -1,18 +1,20 @@
 import "server-only";
-
-import { auth } from "@flagbase/auth";
 import type { Route } from "next";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { authClient } from "./auth-client";
 
 export async function verifySession() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
+  const session = await authClient.getSession({
+    fetchOptions: {
+      headers: await headers(),
+      throw: true,
+    },
   });
 
-  if (!session) {
+  if (!session?.session.userId) {
     redirect("/login" as Route);
   }
 
-  return session;
+  return { isAuth: true, userId: session.session.userId };
 }
