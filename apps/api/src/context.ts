@@ -15,3 +15,11 @@ export async function createContext({ context }: CreateContextOptions) {
 }
 
 export type Context = Awaited<ReturnType<typeof createContext>>;
+
+/**
+ * Authenticated context type with guaranteed session
+ * Use this type after requireAuth middleware runs
+ */
+export type AuthenticatedContext = Context & {
+  session: NonNullable<Context["session"]>;
+};

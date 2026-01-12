@@ -1,14 +1,8 @@
 import prisma from "@flagbase/db";
 import { ORPCError } from "@orpc/server";
-import type { Context } from "@/context";
+import type { AuthenticatedContext } from "@/context";
 
-export async function getCurrentUser(ctx: Context) {
-  if (!ctx.session?.user) {
-    throw new ORPCError("UNAUTHORIZED", {
-      message: "User is not authenticated.",
-    });
-  }
-
+export async function getCurrentUser(ctx: AuthenticatedContext) {
   const user = await prisma.user.findUnique({
     where: { id: ctx.session.user.id },
   });
