@@ -1,6 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import slugify from "@sindresorhus/slugify";
+import { useMutation } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
   ProjectSetupForm,
@@ -8,6 +11,7 @@ import {
   projectSetupSchema,
 } from "@/components/setup/project-setup-form";
 import { Button } from "@/components/ui/button";
+import { orpc } from "@/utils/orpc";
 
 export function ProjectSetup() {
   const form = useForm<ProjectSetupSchema>({
@@ -18,10 +22,33 @@ export function ProjectSetup() {
     },
   });
 
-  function onSubmit(data: ProjectSetupSchema) {
-    console.log("Project Setup Data:", data);
+  const projectName = form.watch("projectName");
 
-    form.reset();
+  useEffect(() => {
+    const url = slugify(projectName || "");
+    form.setValue("projectURL", url);
+  }, [projectName, form]);
+
+  const { mutate: projectSetupMutation, isPending } = useMutation(
+    orpc.setup.projectSetup.mutationOptions({
+      onSuccess: () => {
+        console.log("Project created successfully.");
+      },
+      onError: (error) => {
+        console.error(error);
+      },
+      onSettled: () => {
+        form.reset();
+        // TODO: redirect to dashboard
+      },
+    })
+  );
+
+  function onSubmit(values: ProjectSetupSchema) {
+    projectSetupMutation({
+      projectName: values.projectName,
+      projectURL: values.projectURL,
+    });
   }
   return (
     <div className="space-y-8">
@@ -39,6 +66,7 @@ export function ProjectSetup() {
       </div>
       <Button
         className="h-11 w-full sm:w-sm"
+        disabled={isPending}
         form="project-setup-form"
         size={"lg"}
         type="submit"
