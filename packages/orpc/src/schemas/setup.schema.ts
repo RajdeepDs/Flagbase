@@ -11,7 +11,7 @@ export const ProjectSetupSchema = z.object({
   id: z.string(),
   name: z.string(),
   url: z.string(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
   authorId: z.string(),
 });

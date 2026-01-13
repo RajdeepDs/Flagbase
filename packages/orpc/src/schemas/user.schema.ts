@@ -6,6 +6,7 @@ export const UserSchema = z.object({
   email: z.email(),
   emailVerified: z.boolean(),
   image: z.nullable(z.url()),
-  createdAt: z.date(),
-  updatedAt: z.date(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
+  defaultProject: z.nullable(z.string()),
 });
