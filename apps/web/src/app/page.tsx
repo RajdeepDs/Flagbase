@@ -1,5 +1,10 @@
-export default function Home() {
-  // redirect("/flags" as Route);
+export default async function Home() {
+  // const { isAuth } = await verifySession();
+
+  // if (isAuth) {
+  //   redirect("/" as Route);
+  // }
+
   return (
     <div>
       {" "}
