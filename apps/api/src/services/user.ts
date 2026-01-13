@@ -5,6 +5,16 @@ import type { AuthenticatedContext } from "@/context";
 export async function getCurrentUser(ctx: AuthenticatedContext) {
   const user = await prisma.user.findUnique({
     where: { id: ctx.session.user.id },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      emailVerified: true,
+      image: true,
+      defaultProject: true,
+      createdAt: true,
+      updatedAt: true,
+    },
   });
 
   if (!user) {
