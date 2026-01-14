@@ -14,7 +14,7 @@ export default async function ProjectSetupPage() {
   );
 
   if (defaultProject) {
-    redirect(`/${defaultProject}` as Route);
+    redirect(`/${defaultProject}/flags` as Route);
   }
   return (
     <div className="w-full max-w-sm px-3 text-center sm:max-w-md">
