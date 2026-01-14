@@ -36,3 +36,18 @@ export async function createProject({
 
   return project;
 }
+
+export async function getAllProjectsQuery({
+  ctx,
+}: {
+  ctx: AuthenticatedContext;
+}) {
+  const userId = ctx.session.user.id;
+
+  const projects = await prisma.project.findMany({
+    where: {
+      authorId: userId,
+    },
+  });
+  return projects;
+}

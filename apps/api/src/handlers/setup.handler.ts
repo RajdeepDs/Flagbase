@@ -1,6 +1,6 @@
 import prisma from "@flagbase/db";
 import { protectedProcedure } from "@/procedures";
-import { createProject } from "@/services/project";
+import { createProject } from "@/services/project.service";
 
 export const SetupRouter = {
   projectSetup: protectedProcedure.setup.projectSetup.handler(
