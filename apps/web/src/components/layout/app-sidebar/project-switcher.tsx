@@ -1,15 +1,21 @@
 "use client";
 
 import type { Project } from "@flagbase/orpc";
+import { LogoutSquare01Icon } from "@hugeicons/core-free-icons";
 import { ChevronDownIcon } from "lucide-react";
-import { useState } from "react";
+import type { Route } from "next";
+import { redirect, useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Icon } from "@/components/icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
+  DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Label } from "@/components/ui/label";
@@ -19,16 +25,34 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { useGetAllProjectsQuery } from "@/hooks/use-project";
+import { useUserQuery } from "@/hooks/use-user";
+import { authClient } from "@/lib/auth-client";
 
 export function ProjectSwitcher() {
   const { data: projects } = useGetAllProjectsQuery();
+  const { data: user } = useUserQuery();
+  const { slug } = useParams<{ slug: string }>();
 
   const [currentProject, setCurrentProject] = useState<Project | undefined>(
-    projects?.at(0)
+    undefined
   );
 
-  if (!projects || projects.length === 0) {
-    return null;
+  useEffect(() => {
+    if (projects?.length && !currentProject) {
+      setCurrentProject(
+        projects.find((project) => project.url === slug) || projects[0]
+      );
+    }
+  }, [projects, currentProject, slug]);
+
+  async function handleLogout() {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          redirect("/login" as Route);
+        },
+      },
+    });
   }
 
   return (
@@ -41,9 +65,11 @@ export function ProjectSwitcher() {
                 <Avatar size="sm">
                   <AvatarImage
                     className={"rounded-sm"}
-                    src={"https://github.com/RajdeepDs.png"}
+                    src={user?.image as string}
                   />
-                  <AvatarFallback>RD</AvatarFallback>
+                  <AvatarFallback className={"rounded-sm"}>
+                    {user?.name?.substring(0, 1) ?? "U"}
+                  </AvatarFallback>
                 </Avatar>
                 <Label>{currentProject?.name || "Flagbase"}</Label>
                 <ChevronDownIcon className="text-muted-foreground" size={16} />
@@ -63,6 +89,11 @@ export function ProjectSwitcher() {
                 </DropdownMenuCheckboxItem>
               ))}
             </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={handleLogout} variant="destructive">
+              <Icon icon={LogoutSquare01Icon} />
+              Log out
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
