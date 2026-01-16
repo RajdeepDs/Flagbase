@@ -15,7 +15,7 @@ export const columns: ColumnDef<Flag>[] = [
     accessorKey: "name",
     header: () => <div className="pl-2">Name</div>,
     cell: ({ row }) => (
-      <Link className="pl-2" href={{ pathname: `/flags/${row.original.key}` }}>
+      <Link className="pl-2" href={{ pathname: `flags/${row.original.key}` }}>
         {row.getValue("name") as string}
       </Link>
     ),

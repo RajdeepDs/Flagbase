@@ -40,7 +40,7 @@ export default async function FlagsPage() {
           </Badge>
         }
         rightContent={
-          <Link href={{ pathname: "/cli-setup" }} passHref>
+          <Link href={{ pathname: "cli-setup" }} passHref>
             <Button variant={"outline"}>Create flag via CLI</Button>
           </Link>
         }
