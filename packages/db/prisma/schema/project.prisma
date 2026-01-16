@@ -8,6 +8,8 @@ model Project {
 
   author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
+  flags Flag[]
+
   @@unique([url])
   @@index([authorId])
   @@index([createdAt])
